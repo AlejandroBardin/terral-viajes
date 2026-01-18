@@ -1,0 +1,45 @@
+<%# Partial para los campos de una pregunta individual %>
+<div class="nested-fields bg-gray-50 dark:bg-gray-900 p-4 rounded-lg mb-3 border border-gray-200 dark:border-gray-700">
+  <%= form.hidden_field :_destroy %>
+
+  <div class="flex justify-between items-start mb-3">
+    <h4 class="text-sm font-medium text-gray-900 dark:text-white">Pregunta <%= form.index || "Nueva" %></h4>
+    <button type="button"
+      data-action="nested-form#remove"
+      class="text-red-600 hover:text-red-800 text-sm font-medium">
+      Eliminar
+    </button>
+  </div>
+
+  <div class="space-y-3">
+    <div>
+      <%= form.label :name, "Pregunta", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+      <%= form.text_field :name,
+        placeholder: "¿Incluye traslado desde el aeropuerto?",
+        class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2" %>
+    </div>
+
+    <div>
+      <%= form.label :answer, "Respuesta", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+      <%= form.text_area :answer,
+        rows: 3,
+        placeholder: "Sí, el traslado desde y hacia el aeropuerto está incluido...",
+        class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2" %>
+    </div>
+
+    <div class="grid grid-cols-2 gap-3">
+      <div>
+        <%= form.label :kind, "Categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" %>
+        <%= form.select :kind,
+          Question.kinds.keys.map { |k| [t("enums.question.kind.#{k}"), k] },
+          {},
+          class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2" %>
+      </div>
+
+      <div class="flex items-center pt-6">
+        <%= form.check_box :enabled, class: "rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 h-4 w-4" %>
+        <%= form.label :enabled, "Habilitada", class: "ml-2 text-sm text-gray-700 dark:text-gray-300" %>
+      </div>
+    </div>
+  </div>
+</div>

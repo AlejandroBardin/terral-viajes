@@ -54,6 +54,12 @@ class Admin::PackagesController < Admin::BaseController
 
     # Only allow a list of trusted parameters through.
     def package_params
-      params.expect(package: [ :title, :price, :stars, :duration, :dates, :regime, :featured, :description, :main_image, gallery_images: [] ])
+      params.expect(package: [
+        :title, :price, :stars, :duration, :dates, :regime, :featured, :description,
+        :main_image, :keyword, :gpt_prompt, :start_date, :end_date,
+        :min_passengers, :max_passengers, :min_age, :max_age, :kids_friendly,
+        { gallery_images: [], ideal_profile: [], extras: {}, trip_purpose: [], experience_type: [],
+          questions_attributes: [ :id, :name, :answer, :kind, :score, :enabled, :_destroy ] }
+      ])
     end
 end
