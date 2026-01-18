@@ -24,7 +24,7 @@ class Admin::PackagesController < Admin::BaseController
     @package = Package.new(package_params)
 
     if @package.save
-      redirect_to admin_package_path(@package), notice: "Package was successfully created."
+      redirect_to admin_package_path(@package), notice: "Paquete creado exitosamente."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,12 @@ class Admin::PackagesController < Admin::BaseController
   # PATCH/PUT /admin/packages/1
   def update
     if @package.update(package_params)
-      redirect_to admin_package_path(@package), notice: "Package was successfully updated."
+      # Si solo se actualizó featured, volver al index
+      if params[:package].keys == [ "featured" ]
+        redirect_to admin_packages_path, notice: "Estado de destacado actualizado."
+      else
+        redirect_to admin_package_path(@package), notice: "Paquete actualizado exitosamente."
+      end
     else
       render :edit, status: :unprocessable_entity
     end
