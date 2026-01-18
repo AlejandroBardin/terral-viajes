@@ -1,0 +1,59 @@
+class Admin::PackagesController < Admin::BaseController
+  before_action :set_package, only: %i[ show edit update destroy ]
+
+  # GET /admin/packages
+  def index
+    @packages = Package.all
+  end
+
+  # GET /admin/packages/1
+  def show
+  end
+
+  # GET /admin/packages/new
+  def new
+    @package = Package.new
+  end
+
+  # GET /admin/packages/1/edit
+  def edit
+  end
+
+  # POST /admin/packages
+  def create
+    @package = Package.new(package_params)
+
+    if @package.save
+      redirect_to admin_package_path(@package), notice: "Package was successfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  # PATCH/PUT /admin/packages/1
+  def update
+    if @package.update(package_params)
+      redirect_to admin_package_path(@package), notice: "Package was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  # DELETE /admin/packages/1
+  def destroy
+    @package.destroy!
+
+    redirect_to admin_packages_path, status: :see_other, notice: "Package was successfully destroyed."
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_package
+      @package = Package.find(params.expect(:id))
+    end
+
+    # Only allow a list of trusted parameters through.
+    def package_params
+      params.expect(package: [ :title, :price, :stars, :duration, :dates, :regime, :featured, :description, :main_image, gallery_images: [] ])
+    end
+end

@@ -1,0 +1,19 @@
+<% content_for :title, "Showing package" %>
+
+<div class="md:w-2/3 w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <h1 class="font-bold text-4xl">Showing package</h1>
+
+  <%= render @package %>
+
+  <div class="mt-4 flex gap-x-4">
+    <%= link_to "Edit this package", edit_admin_package_path(@package), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="inline-block ml-2">
+      <%= button_to "Destroy this package", admin_package_path(@package), method: :delete, class: "rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    </div>
+    <%= link_to "Back to packages", admin_packages_path, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  </div>
+</div>

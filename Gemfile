@@ -86,3 +86,5 @@ group :development do
   # Git hooks manager
   gem "overcommit", require: false
 end
+
+gem "active_storage_validations", "~> 3.0"

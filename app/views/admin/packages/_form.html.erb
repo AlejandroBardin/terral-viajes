@@ -1,0 +1,67 @@
+<%= form_with(model: [:admin, package], class: "contents") do |form| %>
+  <% if package.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(package.errors.count, "error") %> prohibited this package from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% package.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:title].none?, "border-red-400 focus:outline-red-600": package.errors[:title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :price %>
+    <%= form.text_field :price, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:price].none?, "border-red-400 focus:outline-red-600": package.errors[:price].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :stars %>
+    <%= form.text_field :stars, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:stars].none?, "border-red-400 focus:outline-red-600": package.errors[:stars].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :duration %>
+    <%= form.text_field :duration, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:duration].none?, "border-red-400 focus:outline-red-600": package.errors[:duration].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :dates %>
+    <%= form.text_field :dates, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:dates].none?, "border-red-400 focus:outline-red-600": package.errors[:dates].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :regime %>
+    <%= form.text_field :regime, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:regime].none?, "border-red-400 focus:outline-red-600": package.errors[:regime].any?}] %>
+  </div>
+
+  <div class="my-5 flex items-center gap-2">
+    <%= form.label :featured %>
+    <%= form.checkbox :featured, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": package.errors[:featured].none?, "border-red-400 focus:outline-red-600": package.errors[:featured].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :description %>
+    <%= form.textarea :description, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": package.errors[:description].none?, "border-red-400 focus:outline-red-600": package.errors[:description].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :main_image %>
+    <%= form.file_field :main_image, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :gallery_images %>
+    <%= form.file_field :gallery_images, multiple: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

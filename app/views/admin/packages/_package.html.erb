@@ -1,0 +1,37 @@
+<div id="<%= dom_id package %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= package.title %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Price:</strong>
+    <%= package.price %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Stars:</strong>
+    <%= package.stars %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Duration:</strong>
+    <%= package.duration %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Dates:</strong>
+    <%= package.dates %>
+  </div>
+  <%= link_to "Show this package", admin_package_path(package), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to "Edit this package", edit_admin_package_path(package), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium ml-2" %>
+  <hr class="mt-6">
+  <div>
+    <strong class="block font-medium mb-1">Regime:</strong>
+    <%= package.regime %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Featured:</strong>
+    <%= package.featured? ? "Yes" : "No" %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= package.description %>
+  </div>
+</div>
