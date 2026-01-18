@@ -16,9 +16,9 @@
         <div class="bg-white rounded-lg shadow p-4 mb-4">
           <%= render package %>
           <div class="mt-4 flex gap-2 justify-end">
-            <%= link_to "Ver", admin_package_path(package), class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= link_to "Editar", edit_admin_package_path(package), class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-            <%= button_to "Eliminar", admin_package_path(package), method: :delete, class: "rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium cursor-pointer", data: { turbo_confirm: "¿Estás seguro?" } %>
+            <%= link_to "Ver", admin_package_path(package), class: "rounded-md px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium" %>
+            <%= link_to "Editar", edit_admin_package_path(package), class: "rounded-md px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white font-medium" %>
+            <%= button_to "Eliminar", admin_package_path(package), method: :delete, class: "rounded-md px-4 py-2 text-white bg-red-600 hover:bg-red-700 font-medium", data: { turbo_confirm: "¿Estás seguro?" } %>
           </div>
         </div>
       <% end %>

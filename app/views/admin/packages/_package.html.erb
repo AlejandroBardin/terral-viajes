@@ -1,37 +1,24 @@
-<div id="<%= dom_id package %>" class="w-full sm:w-auto my-5 space-y-5">
-  <div>
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= package.title %>
+<div class="space-y-2">
+  <div class="flex justify-between items-start">
+    <div class="flex-1">
+      <h3 class="text-lg font-semibold text-gray-900"><%= package.title %></h3>
+      <p class="text-sm text-gray-600 mt-1"><%= package.stars %></p>
+    </div>
+    <div class="text-right">
+      <p class="text-xl font-bold text-indigo-600"><%= number_to_currency(package.price, precision: 0) %></p>
+      <p class="text-sm text-gray-500"><%= package.duration %></p>
+    </div>
   </div>
-  <div>
-    <strong class="block font-medium mb-1">Price:</strong>
-    <%= package.price %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Stars:</strong>
-    <%= package.stars %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Duration:</strong>
-    <%= package.duration %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Dates:</strong>
-    <%= package.dates %>
-  </div>
-  <%= link_to "Show this package", admin_package_path(package), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Edit this package", edit_admin_package_path(package), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium ml-2" %>
-  <hr class="mt-6">
-  <div>
-    <strong class="block font-medium mb-1">Regime:</strong>
-    <%= package.regime %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Featured:</strong>
-    <%= package.featured? ? "Yes" : "No" %>
-  </div>
-  <div>
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= package.description %>
+
+  <% if package.description.present? %>
+    <p class="text-sm text-gray-700 line-clamp-2"><%= package.description %></p>
+  <% end %>
+
+  <div class="flex gap-2 text-xs text-gray-600">
+    <span class="bg-gray-100 px-2 py-1 rounded"><%= package.regime %></span>
+    <span class="bg-gray-100 px-2 py-1 rounded"><%= package.dates %></span>
+    <% if package.featured %>
+      <span class="bg-green-100 text-green-700 px-2 py-1 rounded">Destacado</span>
+    <% end %>
   </div>
 </div>
