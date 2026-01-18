@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_18_021207) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_18_040353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -47,12 +47,45 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_18_021207) do
     t.string "dates"
     t.text "description"
     t.string "duration"
+    t.date "end_date"
+    t.jsonb "experience_type", default: [], null: false
+    t.jsonb "extras", default: {}, null: false
     t.boolean "featured"
+    t.text "gpt_prompt"
+    t.string "ideal_profile", default: [], array: true
+    t.string "keyword"
+    t.boolean "kids_friendly", default: false, null: false
+    t.integer "max_age"
+    t.integer "max_passengers"
+    t.integer "min_age"
+    t.integer "min_passengers"
     t.decimal "price", precision: 10, scale: 2
     t.string "regime"
     t.string "stars"
+    t.date "start_date"
     t.string "title"
+    t.jsonb "trip_purpose", default: [], null: false
     t.datetime "updated_at", null: false
+    t.index ["experience_type"], name: "index_packages_on_experience_type", using: :gin
+    t.index ["extras"], name: "index_packages_on_extras", using: :gin
+    t.index ["keyword"], name: "index_packages_on_keyword", unique: true
+    t.index ["kids_friendly"], name: "index_packages_on_kids_friendly"
+    t.index ["start_date"], name: "index_packages_on_start_date"
+    t.index ["trip_purpose"], name: "index_packages_on_trip_purpose", using: :gin
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text "answer"
+    t.datetime "created_at", null: false
+    t.boolean "enabled", default: true, null: false
+    t.integer "kind", default: 1
+    t.string "name", null: false
+    t.bigint "package_id", null: false
+    t.integer "score"
+    t.datetime "updated_at", null: false
+    t.index ["kind"], name: "index_questions_on_kind"
+    t.index ["package_id", "enabled"], name: "index_questions_on_package_id_and_enabled"
+    t.index ["package_id"], name: "index_questions_on_package_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -82,5 +115,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_18_021207) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "questions", "packages"
   add_foreign_key "sessions", "users"
 end
