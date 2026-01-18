@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Custom Colors */
+@theme {
+  --color-primary: #004b8d;
+  --color-secondary: #fdb85f;
+  --color-background-light: #f3f4f6;
+  --color-background-dark: #111827;
+  --color-card-light: #ffffff;
+ --color-card-dark: #1f2937;
+  --color-text-main-light: #1f2937;
+  --color-text-main-dark: #f9fafb;
+  
+  --font-family-display: "Montserrat", sans-serif;
+  --font-family-handwriting: "Permanent Marker", cursive;
+  
+  --radius: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
