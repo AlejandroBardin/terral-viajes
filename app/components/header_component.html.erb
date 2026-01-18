@@ -1,0 +1,18 @@
+<header class="sticky top-0 z-50 bg-card-light/90 dark:bg-card-dark/90 backdrop-blur-md shadow-sm border-b border-gray-200 dark:border-gray-800">
+  <div class="px-4 py-3 flex justify-between items-center max-w-md mx-auto">
+    <div class="flex items-center space-x-2">
+      <div class="w-10 h-10 rounded-full bg-white border-2 border-primary overflow-hidden flex items-center justify-center p-1">
+        <%= image_tag "https://lh3.googleusercontent.com/aida-public/AB6AXuCH8lzaoeq1yPSGlD7d9_s9aHayl83mHh2EVTaW_l2r4xitJ8c4msKNC96UrzgFyLyMloYr_-PFoHUVmqK7P9m6gAz3HJK0IM4OUSI0FzTDigkhFizVmB_cshiIr9W4pPWeHxYGAsiY81CRK-ZvcLEqh_SxSYClOeTTWHAeNw5EwCxBb7jA6E3nLk62CE8PnQpZzHRTBhA1E1u_gsGQeHcsRd0qVjnnWtBtw_cTYbw44wgMR9c8o9IrAzc9bopq8FA6N1NcPSdvzuY", alt: "Terral Viajes Logo", class: "w-full h-full object-contain transform scale-125" %>
+      </div>
+      <div>
+        <h1 class="text-primary font-bold text-lg leading-none">TERRAL</h1>
+        <p class="text-[0.6rem] uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">Viajes y Turismo</p>
+      </div>
+    </div>
+    <div data-controller="dark-mode">
+      <button data-action="click->dark-mode#toggle" class="bg-primary text-white p-2 rounded-full shadow-lg hover:bg-opacity-90 transition">
+        <span data-dark-mode-target="icon" class="material-symbols-outlined text-sm">dark_mode</span>
+      </button>
+    </div>
+  </div>
+</header>
