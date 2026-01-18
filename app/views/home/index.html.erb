@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <%= meta_tags_for %>
+  <%= organization_structured_data %>
+<% end %>
+
 <%= render HeaderComponent.new %>
 
 <main class="max-w-md mx-auto pb-24">
