@@ -10,7 +10,8 @@ puts "✅ Admin user ensured"
   { key: "whatsapp_number", value: "5493813416824" },
   { key: "facebook_pixel", value: "1166448375323223" },
   { key: "hero_title", value: "Viajá con Terral" },
-  { key: "hero_subtitle", value: "Descubrí los mejores destinos con nosotros" }
+  { key: "hero_subtitle", value: "Descubrí los mejores destinos con nosotros" },
+  { key: "google_analytics_id", value: "" }
 ].each do |setting_attrs|
   Setting.find_or_create_by!(key: setting_attrs[:key]) do |setting|
     setting.value = setting_attrs[:value]

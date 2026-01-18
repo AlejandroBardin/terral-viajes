@@ -1,1 +1,12 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+# Robots.txt for Terral Viajes
+# Allow all crawlers
+
+User-agent: *
+Allow: /
+
+# Disallow admin paths
+Disallow: /admin/
+Disallow: /rails/
+
+# Sitemap location
+Sitemap: <%= ENV.fetch('APP_HOST', 'https://terralviajes.com') %>/sitemap.xml
