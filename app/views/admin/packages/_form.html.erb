@@ -58,9 +58,16 @@
 
           <div>
             <%= form.label :stars, "Categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-            <%= form.text_field :stars,
-              class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2",
-              placeholder: "⭐⭐⭐" %>
+            <%= form.select :stars,
+              [
+                ["⭐ - 1 Estrella", "⭐"],
+                ["⭐⭐ - 2 Estrellas", "⭐⭐"],
+                ["⭐⭐⭐ - 3 Estrellas", "⭐⭐⭐"],
+                ["⭐⭐⭐⭐ - 4 Estrellas", "⭐⭐⭐⭐"],
+                ["⭐⭐⭐⭐⭐ - 5 Estrellas", "⭐⭐⭐⭐⭐"]
+              ],
+              { include_blank: "Seleccionar categoría..." },
+              class: "mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2" %>
           </div>
         </div>
 
