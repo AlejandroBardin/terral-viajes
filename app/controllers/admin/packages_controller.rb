@@ -42,8 +42,7 @@ class Admin::PackagesController < Admin::BaseController
   # DELETE /admin/packages/1
   def destroy
     @package.destroy!
-
-    redirect_to admin_packages_path, status: :see_other, notice: "Package was successfully destroyed."
+    redirect_to admin_packages_path, status: :see_other, notice: "Paquete eliminado exitosamente."
   end
 
   private
