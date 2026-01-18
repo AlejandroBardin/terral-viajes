@@ -53,6 +53,19 @@ puts "✅ Settings ensured"
 ].each do |package_attrs|
   Package.find_or_create_by!(title: package_attrs[:title]) do |package|
     package.assign_attributes(package_attrs)
+
+    # Nuevos campos
+    package.keyword = package_attrs[:title].parameterize
+    package.gpt_prompt = "Eres un agente de ventas de #{package_attrs[:title]}. Sé amable y profesional."
+    package.start_date = 1.month.from_now
+    package.end_date = 1.month.from_now + 5.days
+    package.kids_friendly = package_attrs[:title].include?("Merlo")
+    package.extras = {
+      incluye_traslado: true,
+      incluye_seguro: true,
+      comidas: package_attrs[:regime]
+    }
+
     package.main_image.attach(
       io: File.open(Rails.root.join("db/fixtures/placeholder.jpg")),
       filename: "placeholder.jpg",
@@ -61,3 +74,31 @@ puts "✅ Settings ensured"
   end
 end
 puts "✅ Packages ensured"
+
+# Sample Questions (FAQs) para el primer paquete
+mendoza = Package.find_by(title: "Mendoza a Pleno")
+if mendoza && mendoza.questions.empty?
+  [
+    {
+      name: "¿Qué incluye el paquete?",
+      answer: "El paquete incluye traslados, alojamiento con media pensión, y excursiones a bodegas seleccionadas.",
+      kind: :description,
+      enabled: true
+    },
+    {
+      name: "¿Cuál es la mejor época para ir?",
+      answer: "La mejor época es de febrero a abril (vendimia) o septiembre a noviembre (primavera).",
+      kind: :detail,
+      enabled: true
+    },
+    {
+      name: "¿Es apto para niños?",
+      answer: "Sí, tenemos excursiones familiares aunque algunas bodegas tienen restricción de edad.",
+      kind: :detail,
+      enabled: true
+    }
+  ].each do |question_attrs|
+    mendoza.questions.create!(question_attrs)
+  end
+  puts "✅ Questions for Mendoza package created"
+end
