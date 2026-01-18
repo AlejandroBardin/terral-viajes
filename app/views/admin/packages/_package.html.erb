@@ -17,8 +17,11 @@
   <div class="flex gap-2 text-xs text-gray-600">
     <span class="bg-gray-100 px-2 py-1 rounded"><%= package.regime %></span>
     <span class="bg-gray-100 px-2 py-1 rounded"><%= package.dates %></span>
-    <% if package.featured %>
-      <span class="bg-green-100 text-green-700 px-2 py-1 rounded">Destacado</span>
+    <%= form_with(model: [:admin, package], method: :patch, class: "inline-block") do |f| %>
+      <%= f.hidden_field :featured, value: !package.featured %>
+      <%= f.button type: "submit", class: "#{package.featured ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'} px-2 py-1 rounded hover:opacity-80 cursor-pointer" do %>
+        <%= package.featured ? "✓ Destacado" : "☆ Destacar" %>
+      <% end %>
     <% end %>
   </div>
 </div>
