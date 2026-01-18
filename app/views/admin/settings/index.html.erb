@@ -9,11 +9,11 @@
         <li class="px-4 py-4 sm:px-6">
           <div class="flex items-center justify-between">
             <div class="w-1/3">
-              <p class="text-sm font-medium text-indigo-600 truncate"><%= setting.key %></p>
+              <p class="text-sm font-medium text-indigo-600 truncate"><%= setting_label(setting.key) %></p>
             </div>
             <div class="w-2/3">
               <%= form_with(model: [:admin, setting], method: :patch, class: "flex gap-2") do |f| %>
-                <%= f.text_field :value, class: "flex-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" %>
+                <%= f.text_field :value, class: "flex-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-3 py-2 text-gray-900 bg-white" %>
                 <%= f.submit "Guardar", class: "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
               <% end %>
             </div>
