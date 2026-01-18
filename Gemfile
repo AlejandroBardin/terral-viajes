@@ -67,7 +67,7 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-  
+
   # Testing framework
   gem "rspec-rails", "~> 6.0"
   gem "factory_bot_rails"
@@ -82,4 +82,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Git hooks manager
+  gem "overcommit", require: false
 end
