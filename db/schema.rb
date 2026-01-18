@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_18_015841) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_18_020653) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "packages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "dates"
+    t.text "description"
+    t.string "duration"
+    t.boolean "featured"
+    t.decimal "price", precision: 10, scale: 2
+    t.string "regime"
+    t.string "stars"
+    t.string "title"
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -21,6 +34,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_18_015841) do
     t.string "user_agent"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "key"
+    t.datetime "updated_at", null: false
+    t.string "value"
+    t.index ["key"], name: "index_settings_on_key", unique: true
   end
 
   create_table "users", force: :cascade do |t|
