@@ -38,5 +38,10 @@ module TerralTurismo
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Configuración I18n
+    config.i18n.default_locale = :es
+    config.i18n.available_locales = [ :es, :en ]
+    config.i18n.fallbacks = [ :en ]
   end
 end
