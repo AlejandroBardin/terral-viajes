@@ -62,9 +62,9 @@
   </div>
 
   <!-- Hover overlay para botones -->
-  <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 z-20">
-    <%= link_to "Ver", admin_package_path(package), class: "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-lg" %>
-    <%= link_to "Editar", edit_admin_package_path(package), class: "px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium shadow-lg" %>
-    <%= button_to "Eliminar", admin_package_path(package), method: :delete, class: "px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium shadow-lg", data: { turbo_confirm: "¿Estás seguro?" } %>
+  <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 z-20 pointer-events-none">
+    <%= link_to "Ver", admin_package_path(package), class: "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium shadow-lg pointer-events-auto" %>
+    <%= link_to "Editar", edit_admin_package_path(package), class: "px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-medium shadow-lg pointer-events-auto" %>
+    <%= button_to "Eliminar", admin_package_path(package), method: :delete, class: "px-4 py-2 text-white bg-red-600 hover:bg-red-700 rounded-lg font-medium shadow-lg pointer-events-auto", data: { turbo_confirm: "¿Estás seguro?" } %>
   </div>
 </div>
