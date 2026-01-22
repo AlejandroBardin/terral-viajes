@@ -1,0 +1,30 @@
+# Configuración General de la Aplicación
+# Usa Settings.variable_name para acceder a estos valores
+
+# WhatsApp
+whatsapp_number: <%= ENV.fetch('WHATSAPP_NUMBER', '+5491112345678') %>
+
+# Facebook Pixel (para el dashboard que vamos a crear)
+facebook_pixel:
+  id: <%= Rails.application.credentials.dig(:facebook, :pixel_id) || ENV['FACEBOOK_PIXEL_ID'] || '' %>
+  token: <%= Rails.application.credentials.dig(:facebook, :pixel_token) || ENV['FACEBOOK_PIXEL_TOKEN'] || '' %>
+
+# Google Analytics
+google_analytics_id: <%= ENV['GOOGLE_ANALYTICS_ID'] || '' %>
+
+# Mailer
+mailer:
+  from: <%= Rails.application.credentials.dig(:mailer, :from) || 'noreply@terral-viajes.com' %>
+  host: <%= Rails.application.credentials.dig(:mailer, :host) || 'terral-viajes.bibilioteca-dev.com.ar' %>
+
+# SEO
+seo:
+  site_name: "Terral Viajes"
+  default_title: "Terral Viajes - Experiencias Únicas"
+  default_description: "Descubre destinos increíbles con Terral Viajes"
+
+# Features Flags (para activar/desactivar funcionalidades)
+features:
+  pixel_dashboard: true
+  analytics_tracking: true
+  seo_optimization: true

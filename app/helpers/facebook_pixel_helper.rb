@@ -1,6 +1,7 @@
 module FacebookPixelHelper
   def facebook_pixel_tag
-    pixel_id = Setting.get("facebook_pixel")
+    # Intentar obtener desde Settings (gema config) primero, luego desde Setting (modelo)
+    pixel_id = Settings.facebook_pixel.id.presence || Setting.get("facebook_pixel")
     return unless pixel_id.present?
 
     content_tag(:script) do
@@ -25,7 +26,7 @@ module FacebookPixelHelper
 
   def fb_track_event(event_name, params = {})
     return unless Rails.env.production? || Rails.env.staging?
-    pixel_id = Setting.get("facebook_pixel")
+    pixel_id = Settings.facebook_pixel.id.presence || Setting.get("facebook_pixel")
     return unless pixel_id.present?
 
     content_tag(:script) do
