@@ -1,6 +1,6 @@
 module GtagHelper
   def google_analytics_tag
-    ga_id = ENV.fetch("GOOGLE_ANALYTICS_ID", nil) || Setting.get("google_analytics_id")
+    ga_id = ENV.fetch("GOOGLE_ANALYTICS_ID", nil) || Setting.find_by(key: "google_analytics_id")&.value
     return unless ga_id.present?
 
     content_tag(:script, nil, async: true, src: "https://www.googletagmanager.com/gtag/js?id=#{ga_id}") +
