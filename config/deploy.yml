@@ -34,11 +34,8 @@ env:
   clear:
     # DB_HOST external IP removed to avoid conflict
     ActionMailer_Host: "terral-viajes.bibilioteca-dev.com.ar"
-    # Database Config (Internal Network)
-    DB_HOST: terral-viajes-db
-    DB_PORT: 5432
-    POSTGRES_USER: terral_viajes
-    POSTGRES_DB: terral_viajes_production
+    # Database Config (Internal Network) - Usando DATABASE_URL para forzar conexión TCP
+    DATABASE_URL: "postgres://terral_viajes:<%= ENV['POSTGRES_PASSWORD'] %>@terral-viajes-db:5432/terral_viajes_production"
     REDIS_URL: redis://terral-viajes-redis:6379/1
     RAILS_LOG_LEVEL: info
     RAILS_SERVE_STATIC_FILES: true
