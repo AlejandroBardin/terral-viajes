@@ -82,4 +82,4 @@ ssh:
   # La key se lee desde Rails.application.credentials.ssh.private_key
   # Para que Kamal la use, necesitas crear un archivo temporal o usar ssh-agent
   # Por ahora, mantén el archivo pero lo moverás a ~/.ssh/
-  keys: ["~/.ssh/terral-viajes-deploy"]
+  # keys: ["~/.ssh/terral-viajes-deploy"]
