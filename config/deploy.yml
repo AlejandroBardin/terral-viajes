@@ -9,8 +9,10 @@ servers:
   web:
     hosts:
       - 140.238.178.169
-    directories:
-      - "storage:/rails/storage"
+
+# Persistent Storage
+volumes:
+  - "terral_viajes_storage:/rails/storage"
 
 proxy:
   ssl: true
