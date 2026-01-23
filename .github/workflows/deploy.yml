@@ -26,9 +26,16 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+      - name: Prepare Secrets & Keys
+        run: |
+          # 1. Crear config/master.key
+          echo "${{ secrets.RAILS_MASTER_KEY }}" > config/master.key
+          
+          # 2. Crear .kamal/secrets (Kamal insiste en leer de aquí)
+          mkdir -p .kamal
+          echo "KAMAL_REGISTRY_PASSWORD=${{ secrets.KAMAL_REGISTRY_PASSWORD }}" >> .kamal/secrets
+          echo "RAILS_MASTER_KEY=${{ secrets.RAILS_MASTER_KEY }}" >> .kamal/secrets
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .kamal/secrets
+
       - name: Deploy
-        env:
-          KAMAL_REGISTRY_PASSWORD: ${{ secrets.KAMAL_REGISTRY_PASSWORD }}
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         run: kamal deploy
