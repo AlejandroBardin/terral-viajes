@@ -32,7 +32,7 @@ env:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
   clear:
-    DB_HOST: 140.238.178.169
+    # DB_HOST external IP removed to avoid conflict
     ActionMailer_Host: "terral-viajes.bibilioteca-dev.com.ar"
     # Database Config (Internal Network)
     DB_HOST: terral-viajes-db
