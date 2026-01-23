@@ -40,7 +40,7 @@ module StructuredDataHelper
       "logo": asset_url("logo.png"),
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": Setting.get("whatsapp_number"),
+        "telephone": (Setting.find_by(key: "whatsapp_number")&.value || "+5491112345678"),
         "contactType": "Customer Service",
         "availableLanguage": [ "Spanish" ]
       },
