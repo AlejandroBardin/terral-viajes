@@ -9,6 +9,8 @@ servers:
   web:
     hosts:
       - 140.238.178.169
+    directories:
+      - "storage:/rails/storage"
 
 proxy:
   ssl: true
