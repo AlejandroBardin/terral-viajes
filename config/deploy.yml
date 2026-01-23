@@ -36,6 +36,7 @@ env:
     ActionMailer_Host: "terral-viajes.bibilioteca-dev.com.ar"
     # Database Config (Internal Network) - Usando DATABASE_URL para forzar conexión TCP
     DATABASE_URL: "postgres://terral_viajes:<%= ENV['POSTGRES_PASSWORD'] %>@terral-viajes-db:5432/terral_viajes_production"
+    DB_HOST: terral-viajes-db
     REDIS_URL: redis://terral-viajes-redis:6379/1
     RAILS_LOG_LEVEL: info
     RAILS_SERVE_STATIC_FILES: true
