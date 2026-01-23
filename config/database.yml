@@ -87,18 +87,19 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: terral_turismo_production
-    username: terral_turismo
-    password: <%= ENV["TERRAL_TURISMO_DATABASE_PASSWORD"] %>
+    database: <%= ENV.fetch("POSTGRES_DB") { "terral_viajes_production" } %>
+    username: <%= ENV.fetch("POSTGRES_USER") { "terral_viajes" } %>
+    password: <%= ENV["POSTGRES_PASSWORD"] %>
+    host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
   cache:
     <<: *primary_production
-    database: terral_turismo_production_cache
+    # database: terral_turismo_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: terral_turismo_production_queue
+    # database: terral_turismo_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: terral_turismo_production_cable
+    # database: terral_turismo_production_cable
     migrations_paths: db/cable_migrate

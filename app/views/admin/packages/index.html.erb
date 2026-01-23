@@ -1,0 +1,22 @@
+<% content_for :title, "Packages" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="font-bold text-4xl">Paquetes</h1>
+    <%= link_to "Nuevo Paquete", new_admin_package_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="packages" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% if @packages.any? %>
+      <% @packages.each do |package| %>
+        <%= render package %>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10 text-gray-500">No hay paquetes cargados aún.</p>
+    <% end %>
+  </div>
+</div>

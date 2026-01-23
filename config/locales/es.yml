@@ -1,0 +1,173 @@
+es:
+  activerecord:
+    models:
+      package:
+        one: "Paquete"
+        other: "Paquetes"
+      question:
+        one: "Pregunta Frecuente"
+        other: "Preguntas Frecuentes"
+      setting:
+        one: "Configuración"
+        other: "Configuraciones"
+      user:
+        one: "Usuario"
+        other: "Usuarios"
+
+    attributes:
+      package:
+        title: "Título"
+        description: "Descripción"
+        price: "Precio"
+        stars: "Categoría"
+        duration: "Duración"
+        dates: "Fechas disponibles"
+        regime: "Régimen"
+        featured: "Destacado"
+        main_image: "Imagen principal"
+        gallery_images: "Galería de imágenes"
+        keyword: "Palabra clave"
+        gpt_prompt: "Instrucciones para IA"
+        start_date: "Fecha de inicio"
+        end_date: "Fecha de finalización"
+        min_passengers: "Mínimo de pasajeros"
+        max_passengers: "Máximo de pasajeros"
+        min_age: "Edad mínima"
+        max_age: "Edad máxima"
+        kids_friendly: "Apto para niños"
+        ideal_profile: "Perfil ideal"
+        extras: "Extras incluidos"
+        trip_purpose: "Propósito del viaje"
+        experience_type: "Tipo de experiencia"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+
+      question:
+        name: "Pregunta"
+        answer: "Respuesta"
+        kind: "Categoría"
+        enabled: "Habilitada"
+        score: "Puntuación"
+        images: "Imágenes"
+        package: "Paquete"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+
+      setting:
+        key: "Clave"
+        value: "Valor"
+
+      user:
+        email_address: "Correo electrónico"
+        password: "Contraseña"
+        password_confirmation: "Confirmación de contraseña"
+
+    errors:
+      models:
+        package:
+          attributes:
+            title:
+              blank: "no puede estar vacío"
+            price:
+              blank: "no puede estar vacío"
+              greater_than: "debe ser mayor que %{count}"
+            start_date:
+              before_end_date: "debe ser anterior a la fecha de finalización"
+            main_image:
+              blank: "debe adjuntar una imagen"
+              content_type: "debe ser PNG, JPG o WebP"
+              size: "debe pesar menos de 5MB"
+
+        question:
+          attributes:
+            name:
+              blank: "no puede estar vacío"
+              too_long: "es demasiado largo (máximo %{count} caracteres)"
+            answer:
+              too_long: "es demasiado largo (máximo %{count} caracteres)"
+            images:
+              invalid_type: "debe ser PNG, JPG o WebP"
+              too_big: "debe pesar menos de 6MB"
+
+  enums:
+    question:
+      kind:
+        welcome: "Bienvenida"
+        description: "Descripción"
+        detail: "Detalle"
+        closure: "Cierre"
+
+  helpers:
+    submit:
+      create: "Crear %{model}"
+      update: "Actualizar %{model}"
+      submit: "Guardar %{model}"
+
+    label:
+      package:
+        title: "Nombre del paquete"
+        description: "Descripción completa del viaje"
+        price: "Precio por persona (ARS)"
+        main_image: "Imagen de portada"
+        gallery_images: "Galería (múltiples imágenes)"
+
+  admin:
+    nav:
+      dashboard: "Panel"
+      packages: "Paquetes"
+      settings: "Configuración"
+      logout: "Cerrar Sesión"
+
+    packages:
+      index:
+        title: "Paquetes Turísticos"
+        new: "Nuevo Paquete"
+        edit: "Editar"
+        delete: "Eliminar"
+        show: "Ver Detalle"
+        no_packages: "No hay paquetes cargados aún"
+
+      show:
+        title: "Detalle del Paquete"
+        edit: "Editar este paquete"
+        delete: "Eliminar este paquete"
+        delete_confirm: "¿Estás seguro de eliminar este paquete?"
+        back: "Volver a paquetes"
+
+      form:
+        basic_info: "Información Básica"
+        dates_capacity: "Fechas y Capacidad"
+        images: "Imágenes"
+        classification: "Clasificación"
+        extras: "Extras"
+        faqs: "Preguntas Frecuentes"
+        ai_config: "Configuración de IA"
+        add_question: "Agregar Pregunta"
+        remove_question: "Eliminar"
+
+    settings:
+      index:
+        title: "Configuración Global"
+        save: "Guardar"
+
+      labels:
+        whatsapp_number: "Número de WhatsApp"
+        facebook_pixel: "Facebook Pixel ID"
+        hero_title: "Título del Banner Principal"
+        hero_subtitle: "Subtítulo del Banner Principal"
+
+    dashboard:
+      title: "Panel de Control"
+      welcome: "Bienvenido al panel de administración"
+
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} creado exitosamente"
+        alert: "Error al crear %{resource_name}"
+      update:
+        notice: "%{resource_name} actualizado exitosamente"
+        alert: "Error al actualizar %{resource_name}"
+      destroy:
+        notice: "%{resource_name} eliminado exitosamente"
+        alert: "Error al eliminar %{resource_name}"

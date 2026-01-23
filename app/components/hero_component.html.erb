@@ -1,0 +1,20 @@
+<section class="relative h-[500px] w-full overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent to-background-light dark:to-background-dark z-10 h-full"></div>
+  <%= image_tag @image_url, class: "absolute inset-0 w-full h-full object-cover", alt: @title %>
+  <div class="absolute inset-0 bg-primary/30 z-0"></div>
+  <div class="relative z-20 flex flex-col justify-end h-full px-6 pb-12 text-center">
+    <span class="inline-block px-4 py-1 mb-4 bg-secondary text-white text-xs font-bold uppercase tracking-wider rounded-full shadow-md w-max mx-auto animate-bounce">
+      Temporada 2026
+    </span>
+    <h2 class="text-4xl font-handwriting text-white mb-2 drop-shadow-md">
+      <%= @title.html_safe %>
+    </h2>
+    <p class="text-white text-sm font-medium mb-6 drop-shadow text-balance">
+      <%= @subtitle %>
+    </p>
+    <a class="bg-green-500 hover:bg-green-600 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg flex items-center justify-center gap-2 transform transition hover:-translate-y-1 active:scale-95" href="https://wa.me/5493813416824">
+      <span class="material-symbols-outlined">chat</span>
+      Consultar por WhatsApp
+    </a>
+  </div>
+</section>

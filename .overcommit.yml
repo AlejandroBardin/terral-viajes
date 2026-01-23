@@ -1,0 +1,42 @@
+# Overcommit configuration for Terral Viajes
+# See https://github.com/sds/overcommit for more info
+
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+    command: ['bundle', 'exec', 'rubocop']
+
+  BundleAudit:
+    enabled: true
+    on_warn: fail
+
+  Brakeman:
+    enabled: true
+    on_warn: fail
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/db/structure.sql'
+
+  YamlSyntax:
+    enabled: true
+
+CommitMsg:
+  CapitalizedSubject:
+    enabled: true
+    description: 'Check subject capitalization'
+
+  EmptyMessage:
+    enabled: true
+    description: 'Check for empty commit message'
+
+  TextWidth:
+    enabled: true
+    max_subject_width: 72
+    max_body_width: 80
+
+PostCheckout:
+  BundleInstall:
+    enabled: true
