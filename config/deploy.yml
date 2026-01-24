@@ -29,6 +29,7 @@ registry:
 # Builder configuration
 builder:
   arch: aarch64
+  remote: ssh://ubuntu@140.238.178.169
 
 # Inject ENV variables into containers
 env:
