@@ -1,6 +1,7 @@
 class Admin::SettingsController < Admin::BaseController
   def index
-    @settings = Setting.all
+    @marketing_settings = Setting.where(key: [ "facebook_pixel", "google_analytics_id" ])
+    @general_settings = Setting.where.not(key: [ "facebook_pixel", "google_analytics_id" ])
   end
 
   def update
