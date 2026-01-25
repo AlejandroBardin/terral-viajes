@@ -18,5 +18,6 @@ Rails.application.routes.draw do
     get "dashboard", to: "dashboard#index"
     resources :packages
     resources :settings
+    resource :pixel, only: [ :show, :update ]
   end
 end
