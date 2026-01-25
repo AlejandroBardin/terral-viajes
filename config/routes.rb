@@ -17,7 +17,21 @@ Rails.application.routes.draw do
     root to: "dashboard#index"
     get "dashboard", to: "dashboard#index"
     resources :packages
-    resources :settings
+    resources :settings do
+      delete "disconnect_meta", on: :collection
+    end
     resource :pixel, only: [ :show, :update ]
+  end
+  namespace :api do
+    scope "webhooks" do
+      # Meta Webhook (GET=Verify, POST=Receive)
+      match "meta", to: "meta/webhooks#handle", via: [ :get, :post ]
+      post "chatwoot", to: "webhooks#chatwoot"
+    end
+  end
+
+  namespace :auth do
+    get "meta/callback", to: "meta#callback"
+    post "meta/save_page", to: "meta#save_page"
   end
 end

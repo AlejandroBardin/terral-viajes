@@ -6,6 +6,10 @@ Rails.application.configure do
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
+  # Allow ngrok host
+  config.hosts << "694ab7f3bf46.ngrok-free.app"
+
+
   # Do not eager load code on boot.
   config.eager_load = false
 
