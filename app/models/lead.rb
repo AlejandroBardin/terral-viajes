@@ -33,7 +33,13 @@ class Lead < ApplicationRecord
   # CAPI Trigger
   after_update :trigger_capi_conversion, if: -> { saved_change_to_status? && converted? }
 
+  after_create_commit :sync_to_chatwoot
+
   private
+
+  def sync_to_chatwoot
+    ChatwootIntegrationJob.perform_later(self.id)
+  end
 
   def trigger_capi_conversion
     Meta::CapiConversionJob.perform_later(self.id)

@@ -28,9 +28,17 @@
       <p class="text-sm text-slate-500 mt-1">Lead Potencial • Hace <%= time_ago_in_words(lead.created_at) %></p>
 
       <div class="mt-6 w-full">
-        <a href="#" class="flex items-center justify-center w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]">
-          <i class="bi bi-chat-left-text mr-2"></i> Abrir Conversación
-        </a>
+        <% if lead.chatwoot_conversation_id.present? %>
+          <a href="<%= ENV.fetch('CHATWOOT_INSTALLATION_URL', 'https://app.chatwoot.com') %>/app/accounts/<%= ENV.fetch('CHATWOOT_ACCOUNT_ID', '1') %>/conversations/<%= lead.chatwoot_conversation_id %>"
+             target="_blank"
+             class="flex items-center justify-center w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-[0.98]">
+            <i class="bi bi-chat-left-text mr-2"></i> Abrir Chatwoot
+          </a>
+        <% else %>
+          <span class="flex items-center justify-center w-full py-3 bg-slate-700 text-slate-500 font-semibold rounded-lg cursor-not-allowed">
+            <i class="bi bi-chat-left-text mr-2"></i> Sin Conversación
+          </span>
+        <% end %>
       </div>
     </div>
 
