@@ -28,4 +28,14 @@ class Lead < ApplicationRecord
   def platform_icon
     platform == "ig" ? "bi-instagram" : "bi-facebook"
   end
+
+
+  # CAPI Trigger
+  after_update :trigger_capi_conversion, if: -> { saved_change_to_status? && converted? }
+
+  private
+
+  def trigger_capi_conversion
+    Meta::CapiConversionJob.perform_later(self.id)
+  end
 end

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       delete "disconnect_meta", on: :collection
     end
     resource :pixel, only: [ :show, :update ]
+    resources :leads, only: [ :index, :show ]
   end
   namespace :api do
     scope "webhooks" do
