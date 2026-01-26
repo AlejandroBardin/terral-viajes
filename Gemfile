@@ -88,3 +88,6 @@ group :development do
 end
 
 gem "active_storage_validations", "~> 3.0"
+
+gem "faraday", "~> 2.14"
+gem "httparty"

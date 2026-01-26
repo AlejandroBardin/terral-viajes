@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terral CRM Leads</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0c9fe9",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f172a", // Slate 900 for Deep Ocean
+                        "surface-dark": "#1e293b", // Slate 800 for cards
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for chrome/safari/opera */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex justify-center">
+<!-- Mobile Container -->
+<div class="w-full max-w-md bg-white dark:bg-background-dark relative flex flex-col min-h-screen shadow-2xl overflow-hidden">
+<!-- Top Toolbar -->
+<header class="flex items-center justify-between p-4 pb-2 bg-white dark:bg-background-dark sticky top-0 z-10">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">CRM Leads</h1>
+<button class="flex items-center gap-2 bg-slate-100 dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 px-3 py-2 rounded-lg transition-colors group">
+<span class="material-symbols-outlined text-primary group-hover:rotate-180 transition-transform duration-500">sync</span>
+<span class="text-sm font-bold text-slate-600 dark:text-sky-100 hidden sm:block">Sincronizar</span>
+<span class="text-xs font-bold text-slate-600 dark:text-sky-100 block sm:hidden">Sync FB</span>
+</button>
+</header>
+<!-- Search & Filters -->
+<div class="px-4 py-3 space-y-3 bg-white dark:bg-background-dark z-10">
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 rounded-xl border-none bg-slate-100 dark:bg-surface-dark text-slate-900 dark:text-white placeholder-slate-500 focus:ring-2 focus:ring-primary text-sm font-medium transition-all shadow-sm" placeholder="Buscar nombre o teléfono..." type="text"/>
+</div>
+<!-- Horizontal Filter Chips -->
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="flex items-center gap-1 bg-primary text-white px-3 py-1.5 rounded-full text-xs font-medium shrink-0 shadow-lg shadow-primary/20">
+                    Estado: Todos
+                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex items-center gap-1 bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-full text-xs font-medium shrink-0">
+                    Campaña: Verano 2026
+                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="flex items-center gap-1 bg-slate-100 dark:bg-surface-dark text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded-full text-xs font-medium shrink-0">
+                    Canal: WA
+                    <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<div class="h-px bg-slate-200 dark:bg-slate-800 w-full mb-2"></div>
+<!-- Data List -->
+<div class="flex-1 overflow-y-auto px-4 pb-20 space-y-3">
+<!-- Lead Card 1: Nuevo Lead -->
+<article class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group active:scale-[0.99] transition-transform">
+<!-- Highlight Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-slate-100 dark:ring-slate-700" data-alt="Portrait of Juan Perez looking professional" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABbfKoynR4ZO9NFTade3jE4jRHVs9YEmCARZQvqYCRJQWki5QOxqejPmScV3X8Ki1zAEyJMOSe9GMlObp-ICk-6ZmWxgoOKgvnnVzx3seXhFOd4V0EUogID2leCg1syfx7mhilbDlHF-532bOWurAaAM4N9CB23Uj3XRMh_jSkaAeUwP5XcwrK6GwkjyZd-MsJ4ilfe6yDKlhb63ZstRnsf56gnipe8LlSTmbEfajkzSCJHg0nLckjvMtMCR11PJLJEzpFof1Zepk');"></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 rounded-full p-0.5">
+<span class="material-symbols-outlined text-[16px] text-[#25D366]" title="WhatsApp">chat</span>
+</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-base leading-tight">Juan Perez</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-0.5">+56 9 1234 5678</p>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-400 whitespace-nowrap">Hace 2h</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 pl-1">
+<!-- Status Badge -->
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-200 dark:border-sky-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-1.5 animate-pulse"></span>
+                        Nuevo Lead
+                    </span>
+<!-- Attribution -->
+<span class="inline-flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px] text-orange-500 icon-fill">local_fire_department</span>
+                        Verano 2026
+                    </span>
+<!-- Pixel Match -->
+<span class="inline-flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400" title="Pixel Matched">
+<span class="material-symbols-outlined text-[16px] icon-fill">check_circle</span>
+                        Match
+                    </span>
+</div>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</article>
+<!-- Lead Card 2: En Conversación (Hover State Simulation) -->
+<article class="bg-slate-50 dark:bg-[#253246] rounded-xl p-4 border border-primary/30 shadow-md relative overflow-hidden group active:scale-[0.99] transition-transform">
+<!-- Highlight Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-emerald-500/30" data-alt="Portrait of Maria Gonzalez smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl07C0DZyEu8WX91rbjD20_RnYAyC6hhV20cME6cDEUMRfhy2tEHeheJqKpn5CtJfk_45gixgovoPoeBHk3CWOOvzb4ch0joS9dOlWJf67rJuk77bLYxEoxJIwBs2ByREPxXDn2kRX0UoOIQyHMc1Pl29Rh5H0RufDjWhG-SFlyHfm1Bp8L8sgAdWNinZjUOuLKbrtqC6KgZ53izseflQpYzrFBlrkZwZpHbiYt-HbOaHJzrUpg8iBBf7CxdGgfDJiWOSdjXzTDFo');"></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 rounded-full p-0.5">
+<span class="material-symbols-outlined text-[16px] text-[#E1306C]" title="Instagram">photo_camera</span>
+</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-base leading-tight">Maria Gonzalez</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-0.5">+56 9 8765 4321</p>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-400 whitespace-nowrap">Hace 4h</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 pl-1">
+<!-- Status Badge -->
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5"></span>
+                        En Conversación
+                    </span>
+<!-- Attribution -->
+<span class="inline-flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px] text-orange-500 icon-fill">local_fire_department</span>
+                        Verano 2026
+                    </span>
+<!-- No Match for this one to vary UI -->
+</div>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</article>
+<!-- Lead Card 3: Cerrado -->
+<article class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-200 dark:border-slate-700/50 relative overflow-hidden opacity-70 hover:opacity-100 transition-opacity">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-cover bg-center grayscale" data-alt="Portrait of Carlos Ruiz serious expression" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEmpUpqHfoAjnq8v5rnohFl0rel6UVDDS_qBtqDXpZw_kOb-VfWaGKYRg79zSWJjmf-XRA6sE2hOrvcqP4SbJH-AZkZrf-FSzy0i4pX1nwuPwM9Hy_Fe9cOKXXul3pUhUQEy4eEhJPFt89rTXe_5UZSD_3vr8dlJpwkFJN_4cxCeB93qFw1BilzTZdriK2XuZHx_Q_IHOAQf0W1AwKhVAtfVYpu4dQ3n7ZjQKb0fPGzO2PQkLVcQpm6m0_9n7WWtwuzjivknxP4wE');"></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 rounded-full p-0.5">
+<span class="material-symbols-outlined text-[16px] text-slate-400" title="Email">mail</span>
+</div>
+</div>
+<div>
+<h3 class="text-slate-700 dark:text-slate-300 font-bold text-base leading-tight">Carlos Ruiz</h3>
+<p class="text-slate-400 dark:text-slate-500 text-sm mt-0.5">+56 9 5555 1234</p>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-500 whitespace-nowrap">Ayer</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 pl-1">
+<!-- Status Badge -->
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600">
+<span class="w-1.5 h-1.5 rounded-full bg-slate-400 mr-1.5"></span>
+                        Cerrado
+                    </span>
+<!-- Attribution -->
+<span class="inline-flex items-center gap-1 text-xs text-slate-500 dark:text-slate-500">
+<span class="material-symbols-outlined text-[14px]">campaign</span>
+                        Invierno 2025
+                    </span>
+</div>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 dark:text-slate-700">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</article>
+<!-- Lead Card 4: Nuevo Lead -->
+<article class="bg-white dark:bg-surface-dark rounded-xl p-4 border border-slate-200 dark:border-slate-700/50 shadow-sm relative overflow-hidden group active:scale-[0.99] transition-transform">
+<!-- Highlight Strip -->
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-3">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-cover bg-center ring-2 ring-slate-100 dark:ring-slate-700" data-alt="Portrait of Ana Soto smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDfXWcYN1gn9a5mqRvbWKYHXWiTKJFRQvWBvxhfUTxzN6rHSCF-DbovOMm8pLLviYcKnjgfz42l4bpjRwBTaU2CAfI_X_Oc6VFR5WuyfGOVK_IBGnMqFgvvGajKx6YSq9E8epKKQR9V86t1usylADWqZ0kAE5AtbCtLF5WxfzlZDoL2zED3bTukInJlx1q1ZFEbY4nnK1TVcyqsRsyEhMGSMIZD6SOih0ilEa32PaFDDqcGXCGQ1ABDDLoKEKoOIbxTUuTzWeDKnJ0');"></div>
+<div class="absolute -bottom-1 -right-1 bg-white dark:bg-slate-900 rounded-full p-0.5">
+<span class="material-symbols-outlined text-[16px] text-[#25D366]" title="WhatsApp">chat</span>
+</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white font-bold text-base leading-tight">Ana Soto</h3>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-0.5">+56 9 9988 7766</p>
+</div>
+</div>
+<span class="text-xs font-medium text-slate-400 whitespace-nowrap">Hace 5h</span>
+</div>
+<div class="flex flex-wrap items-center gap-2 pl-1">
+<!-- Status Badge -->
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-200 dark:border-sky-500/20">
+<span class="w-1.5 h-1.5 rounded-full bg-sky-500 mr-1.5 animate-pulse"></span>
+                        Nuevo Lead
+                    </span>
+<!-- Attribution -->
+<span class="inline-flex items-center gap-1 text-xs text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined text-[14px] text-orange-500 icon-fill">local_fire_department</span>
+                        Verano 2026
+                    </span>
+<!-- Pixel Match -->
+<span class="inline-flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400" title="Pixel Matched">
+<span class="material-symbols-outlined text-[16px] icon-fill">check_circle</span>
+                        Match
+                    </span>
+</div>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</article>
+</div>
+</div>
+</body></html>
