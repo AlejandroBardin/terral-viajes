@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Terral CRM - Lead Intelligence Drawer</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#0a9ceb", // Sky blue accent
+              "slate": {
+                800: "#1e293b", // Drawer Background
+                900: "#0f172a", // Darker accents
+              },
+              "background-light": "#f5f7f8",
+              "background-dark": "#0f172a", // Underlying scrim color
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display antialiased selection:bg-primary selection:text-white overflow-hidden">
+<!-- Mocking the slide-over context: Main screen background (dimmed) -->
+<div class="relative flex h-screen w-full justify-end bg-black/50 backdrop-blur-sm">
+<!-- Drawer Container -->
+<div class="h-full w-full max-w-md flex flex-col bg-slate-800 shadow-2xl relative animate-in slide-in-from-right duration-300">
+<!-- 1. Header & Nav -->
+<div class="flex items-center justify-between p-5 border-b border-slate-700/50 bg-slate-800 sticky top-0 z-10">
+<div class="flex items-center gap-3">
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-white text-lg font-bold tracking-tight">Detalle del Lead</h2>
+</div>
+<button class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-700/50 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto no-scrollbar p-5 space-y-6">
+<!-- 2. Profile Header -->
+<div class="flex flex-col items-center gap-4">
+<div class="relative">
+<div class="w-24 h-24 rounded-full bg-slate-700 p-1 ring-2 ring-slate-600">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Portrait of Juan Pérez, a potential lead" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCMjuPXYVLIBEIS_WZbksNb2Vxjt6Mix90kkF2bMZOohLsKAF_0Xat6thcO-As4tFyFH7qymtxf-G7p2b9-S-Ilh9qJD_qb5xDN45btsKnbx-VrbcrPxqHyzv7Dqb_Np_G_drEl_o4K5e7FKEvVp5fB51PN8FHM52BPzC52tP2p4IHGpVZmkLMB3zAOoFICcTXIzUmETX3U06AGPeRG289W9aPPgyIso_hFaZcsPLDgXp7r3zeEV8jOsjyijt_yLGzIvfNUjDHFR9E')"></div>
+</div>
+<div class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-2 border-slate-800"></div>
+</div>
+<div class="text-center">
+<h1 class="text-2xl font-bold text-white mb-1">Juan Pérez</h1>
+<p class="text-slate-400 text-sm font-medium">Lead Potencial • Hace 5 min</p>
+</div>
+<button class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg border-2 border-primary text-primary hover:bg-primary/10 transition-colors font-semibold group">
+<span class="material-symbols-outlined group-hover:animate-pulse">forum</span>
+<span>Abrir Conversación</span>
+</button>
+</div>
+<!-- 3. Ad Intelligence Card -->
+<div class="rounded-xl p-[1px] bg-gradient-to-br from-slate-600 to-slate-800">
+<div class="relative overflow-hidden rounded-[11px] bg-gradient-to-br from-slate-800 via-[#1e293b] to-[#2e1065] p-4 shadow-lg">
+<!-- Decorative glow -->
+<div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-primary/20 blur-3xl rounded-full pointer-events-none"></div>
+<div class="flex items-start gap-4 relative z-10">
+<div class="shrink-0">
+<div class="w-[72px] h-[72px] rounded-lg bg-slate-900 bg-cover bg-center shadow-inner border border-white/10" data-alt="Beach travel advertisement thumbnail showing palm trees and ocean" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAS_HbR5xHpCl35iP9-rASw0lI5CdNFdtt6aSg4KI1Pyqf1hWwVvMdthq1IA2OfYb14p52GtNpi4lmT-PlHrEtTnuhPXRJpM0EsXYPmTISNHqAoMnJlpK0BZxITUvln3MYvzglYK6U4CTBzsVf3kpe_zMbe1kteJBOCR-8jWGoPWoD0d2M-JU3NMDIZMEhEOVazuyrB36ZnZ-GdC04PcMUBadtaiPR7OeF3o50Uj1dmJDXLVxJt-PqSqvbETopn4GMYLMUWEsNWJdU')"></div>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-white font-bold text-base truncate pr-2">Promo Verano</h3>
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/10 text-green-400 border border-green-500/20">
+                                        $0.45 USD
+                                    </span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-1.5 text-xs text-slate-300">
+<span class="material-symbols-outlined text-[14px] text-primary">campaign</span>
+<span>Instagram Stories</span>
+</div>
+<div class="flex items-center gap-1.5 text-xs text-slate-400">
+<span class="material-symbols-outlined text-[14px]">smartphone</span>
+<span>iPhone 13</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Activity Timeline -->
+<div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700/50">
+<h3 class="text-slate-300 text-sm font-semibold mb-4 uppercase tracking-wider">Actividad Reciente</h3>
+<div class="relative pl-2">
+<!-- Connecting Line -->
+<div class="absolute left-[11px] top-2 bottom-4 w-0.5 bg-slate-700"></div>
+<!-- Item 1 -->
+<div class="relative flex gap-4 pb-6 group">
+<div class="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-800 ring-2 ring-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">visibility</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-white leading-none mb-1">Vio anuncio en Instagram</p>
+<span class="text-xs text-slate-500">14:20 • ID: 8923</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="relative flex gap-4 pb-6 group">
+<div class="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-slate-800 ring-2 ring-primary">
+<span class="material-symbols-outlined text-[14px] text-primary">public</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-white leading-none mb-1">Visitó Landing Cataratas</p>
+<span class="text-xs text-slate-500">14:22 • Chrome Mobile</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="relative flex gap-4">
+<div class="relative z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary ring-4 ring-primary/20">
+<span class="material-symbols-outlined text-[14px] text-white icon-filled">chat_bubble</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<p class="text-sm font-bold text-white leading-none">Clic en WhatsApp</p>
+<span class="px-1.5 py-0.5 rounded bg-purple-500/20 border border-purple-500/30 text-[10px] font-bold text-purple-300">CAPI Match</span>
+</div>
+<span class="text-xs text-slate-400">14:25 • Conversión iniciada</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. Quick Actions Grid -->
+<div class="grid grid-cols-2 gap-3 pb-6">
+<button class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-slate-700 hover:bg-slate-600 active:bg-slate-500 transition-all group">
+<span class="material-symbols-outlined text-3xl text-sky-300 group-hover:scale-110 transition-transform">mail</span>
+<span class="text-sm font-medium text-white">Enviar PDF</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-slate-700 hover:bg-slate-600 active:bg-slate-500 transition-all group">
+<span class="material-symbols-outlined text-3xl text-amber-300 group-hover:scale-110 transition-transform">request_quote</span>
+<span class="text-sm font-medium text-white">Re-cotizar</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-slate-700/50 hover:bg-slate-600 active:bg-slate-500 transition-all group border border-slate-700 hover:border-slate-500">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-white transition-colors">archive</span>
+<span class="text-sm font-medium text-slate-300 group-hover:text-white">Archivar</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 h-24 rounded-xl bg-slate-700/50 hover:bg-red-900/30 active:bg-red-900/50 transition-all group border border-slate-700 hover:border-red-800">
+<span class="material-symbols-outlined text-3xl text-slate-400 group-hover:text-red-400 transition-colors">block</span>
+<span class="text-sm font-medium text-slate-300 group-hover:text-red-200">Spam</span>
+</button>
+</div>
+<div class="h-6"></div> <!-- Bottom spacer -->
+</div>
+</div>
+</div>
+</body></html>

@@ -1,21 +1,10 @@
 class Admin::SettingsController < Admin::BaseController
   def index
-    @marketing_settings = Setting.where(key: [ "facebook_pixel", "google_analytics_id" ])
-    @general_settings = Setting.where.not(key: [ "facebook_pixel", "google_analytics_id" ])
+    @meta_connection = MetaPageConnection.active.first
   end
 
-  def update
-    @setting = Setting.find(params[:id])
-    if @setting.update(setting_params)
-      redirect_to admin_settings_path, notice: "Configuración actualizada."
-    else
-      redirect_to admin_settings_path, alert: "Error al actualizar."
-    end
-  end
-
-  private
-
-  def setting_params
-    params.require(:setting).permit(:value)
+  def disconnect_meta
+    MetaPageConnection.active.update_all(is_active: false)
+    redirect_to admin_settings_path, notice: "Facebook Page disconnected."
   end
 end

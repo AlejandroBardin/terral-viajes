@@ -1,0 +1,134 @@
+<div data-controller="drawer">
+
+  <!-- Quick Stats -->
+  <div class="grid grid-cols-2 gap-3 mb-6">
+    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-sm">
+      <p class="text-xs font-medium text-slate-400">Total Leads</p>
+      <div class="flex items-end justify-between mt-1">
+        <h3 class="text-xl font-bold text-white"><%= @leads.count %></h3>
+        <span class="text-[10px] font-bold text-emerald-500 flex items-center bg-emerald-500/10 px-1.5 py-0.5 rounded">
+          <span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>12%
+        </span>
+      </div>
+    </div>
+    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-sm">
+      <p class="text-xs font-medium text-slate-400">Nuevos Hoy</p>
+      <div class="flex items-end justify-between mt-1">
+        <h3 class="text-xl font-bold text-white"><%= @leads.recent.count %></h3>
+        <span class="text-[10px] font-bold text-emerald-500 flex items-center bg-emerald-500/10 px-1.5 py-0.5 rounded">
+          <span class="material-symbols-outlined text-[12px] mr-0.5">trending_up</span>5%
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Leads List -->
+  <div class="flex items-center justify-between mb-4">
+    <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider">Leads Recientes</h3>
+    <button class="text-xs font-semibold text-blue-400 hover:text-blue-300">Ver todos</button>
+  </div>
+
+  <div class="space-y-3">
+    <% @leads.each do |lead| %>
+      <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 shadow-sm flex items-center gap-4 cursor-pointer hover:border-blue-500/50 transition-colors group"
+           data-action="click->drawer#open"
+           data-drawer-url-value="<%= admin_lead_path(lead) %>">
+
+        <!-- Avatar -->
+        <div class="w-12 h-12 rounded-full flex items-center justify-center font-bold relative bg-blue-500/10 text-blue-500">
+           <%= lead.initials %>
+        </div>
+
+        <!-- Info -->
+        <div class="flex-1">
+          <div class="flex items-center justify-between">
+            <h4 class="font-semibold text-white group-hover:text-blue-400 transition-colors"><%= lead.full_name %></h4>
+
+            <% status_style = case lead.status
+               when 'new_lead' then 'bg-blue-500/20 text-blue-500'
+               when 'contacted' then 'bg-amber-500/20 text-amber-500'
+               when 'converted' then 'bg-emerald-500/20 text-emerald-500'
+               else 'bg-slate-500/20 text-slate-500'
+               end %>
+            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold <%= status_style %>">
+              <%= lead.status.humanize %>
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-400 truncate mt-0.5">
+             <%= lead.ad_headline.presence || "Interesado en #{lead.platform}" %>
+          </p>
+
+          <div class="flex items-center gap-3 mt-2">
+            <span class="text-[10px] text-slate-500 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">calendar_today</span>
+              Hace <%= time_ago_in_words(lead.created_at) %>
+            </span>
+            <span class="text-[10px] text-slate-500 flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">smartphone</span>
+              <%= lead.platform.upcase %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Conversion Events Placeholder (Static from example) -->
+  <div class="mt-8">
+    <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Eventos de Conversión</h3>
+    <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-sm">
+      <div class="p-4 border-b border-slate-700 flex items-center justify-between bg-slate-900/50">
+        <span class="text-xs font-bold text-slate-500 uppercase">Evento</span>
+        <span class="text-xs font-bold text-slate-500 uppercase">Total</span>
+      </div>
+      <div class="divide-y divide-slate-700">
+        <div class="p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-blue-500 text-xl">visibility</span>
+            <div>
+              <p class="text-sm font-medium text-white">ViewContent</p>
+              <span class="text-[10px] bg-blue-500/10 text-blue-500 px-1.5 py-0.5 rounded">auto</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-sm font-bold text-white">8,421</p>
+            <p class="text-[10px] text-emerald-500 font-bold">+12%</p>
+          </div>
+        </div>
+         <div class="p-4 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-blue-500 text-xl">chat_bubble</span>
+            <div>
+              <p class="text-sm font-medium text-white">Lead (WhatsApp)</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <p class="text-sm font-bold text-white">342</p>
+            <p class="text-[10px] text-emerald-500 font-bold">+5%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="fixed bottom-6 right-6 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg shadow-blue-600/30 flex items-center justify-center z-20 hover:scale-110 transition-transform">
+    <span class="material-symbols-outlined text-2xl">person_add</span>
+  </button>
+
+  <!-- DRAWER SHELL -->
+  <!-- Backdrop -->
+  <div data-drawer-target="backdrop"
+       data-action="click->drawer#close"
+       class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm z-40 transition-opacity opacity-0 pointer-events-none">
+  </div>
+
+  <!-- Panel -->
+  <div data-drawer-target="panel"
+       class="fixed inset-y-0 right-0 w-full md:w-[480px] bg-[#0F172A] shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out border-l border-slate-700">
+    <div data-drawer-target="content" class="h-full">
+      <!-- Ajax Content Loads Here -->
+    </div>
+  </div>
+
+</div>
