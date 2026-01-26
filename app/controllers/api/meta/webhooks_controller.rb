@@ -52,7 +52,7 @@ module Api
       private
 
       def verify_signature
-        return if request.get? # Verification doesn't use HMAC in this way
+        return if request.get? || request.head? # Verification doesn't use HMAC in this way
 
         signature = request.headers["X-Hub-Signature-256"]
         return head :forbidden unless signature
